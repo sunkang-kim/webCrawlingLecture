@@ -65,7 +65,7 @@ const evalCode = async (sidoCode) => {
 // 지도에서 원하는 지역(시/군/구)으로 이동
 const evalSigungu = async (sigunguCode) => {
   sigungu = sigunguCode;
-  const selector = `#continents > li.${sigungu} > a`;
+  const selector = `#container #continents > li.${sigungu} > a`;
   // 해당 페이지에서 해당 document가 로드 될 때까지 기다리는 함수
   await page.waitForSelector(selector);
 

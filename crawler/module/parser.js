@@ -6,7 +6,7 @@ async function addressParser(data) {
       query: data.address
     },
     headers: {
-      Authorization: 'KakaoAK 679935ae8e67d5c7fbcf185e7df59b35'
+      Authorization: 'KakaoAK 발급받은 API키를 입력하세요'
     }
   })
 
@@ -17,8 +17,8 @@ async function addressParser(data) {
     lat = res.data.documents[0].address.y
   }
 
-  data.lng = lng
-  data.lat = lat
+  data.lng = Number(lng)
+  data.lat = Number(lat)
   
   return data
 

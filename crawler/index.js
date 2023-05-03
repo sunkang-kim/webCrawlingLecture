@@ -24,10 +24,10 @@ async function main() {
   await checkPopup()
 
   // 지도에서 원하는 지역(시/도)으로 이동
-  await evalCode('seoul')
+  await evalCode('jeju')
 
   // 지도에서 원하는 지역(시/군/구)으로 이동
-  await evalSigungu('songpa_gu')  
+  await evalSigungu('jeju')  
 
   // 경고창 닫기
   await closeAlert()
