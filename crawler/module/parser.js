@@ -6,7 +6,7 @@ async function addressParser(data) {
       query: data.address
     },
     headers: {
-      Authorization: 'KakaoAK 발급받은 API 키를 입력하세요'
+      Authorization: 'KakaoAK 발급받은 API키를 등록하세요'
     }
   })
 

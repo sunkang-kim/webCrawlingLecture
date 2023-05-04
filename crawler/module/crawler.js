@@ -1,6 +1,7 @@
 import puppeteer from "puppeteer-core";
 import os from "os";
 import fs from "fs";
+import short from 'short-uuid'
 import { addressParser } from "./parser.js";
 
 // chrome 실행 경로
@@ -11,7 +12,7 @@ const macUrl = "/Applications/Google Crome.app/Content/MacOS/Google Chrome";
 const currentOs = os.type();
 
 const launchConfig = {
-  headless: false,
+  headless: true,
   defaultViewport: null,
   ignoreDefaultArgs: ["--disable-extensions"],
   args: [
@@ -98,7 +99,7 @@ const getPageLength = async () => {
 const getData = async () => {
   for (let i = 0; i < pageNum; i++) {
     await page.waitForSelector(pagingSelector);
-    const info = await page.evaluate(() => {
+    let info = await page.evaluate(() => {
       var trArr = Array.from(
         document.querySelectorAll("#printZone > table:nth-child(2) > tbody tr")
       );
@@ -119,6 +120,11 @@ const getData = async () => {
 
       return data;
     });
+
+    info = Array.from(info).map(val => {
+      val.id = short.generate()
+      return val
+    })
 
     finalData = finalData.concat(info);
 
